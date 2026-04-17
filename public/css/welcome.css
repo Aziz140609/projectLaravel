@@ -1,0 +1,362 @@
+        :root {
+            --primary: #10b981; /* Hijau modern */
+            --primary-dark: #059669;
+            --light-bg: #f8fafc; /* Latar belakang cerah */
+            --glass-bg: rgba(255, 255, 255, 0.85); /* transparan putih */
+            --glass-border: rgba(0, 0, 0, 0.05); /* border transparan gelap */
+            --text-main: #1e293b; /* Abu-abu tua hampir hitam */
+            --text-muted: #475569; /* Abu-abu sedang */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        #Container-1 {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: linear-gradient(to right, rgba(248, 250, 252, 0.95) 0%, rgba(248, 250, 252, 0.7) 60%, rgba(248, 250, 252, 0.3) 100%), url('../img/bg_utama.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #Container-2 {
+            padding: 100px 10%;
+            background-color: var(--light-bg);
+            min-height: 50vh;
+            text-align: center;
+        }
+
+        #Keunggulan {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #JudulKeunggulan {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        #DeskripsiKeunggulan {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+        }
+
+        #CardContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        #CardContainer > div {
+            background: #ffffff;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            /* Floating effect: baseline translation and deep shadow */
+            transform: translateY(-15px);
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+            transition: all 0.5s ease; /* For smooth rendering */
+            border-radius: 20px; /* Slight rounding for the base shape */
+        }
+
+        /* Card 1 */
+        #CardContainer > .card-1 {
+            clip-path: polygon(0% 0%, 100% 5%, 100% 100%, 0% 95%);
+            background-image: linear-gradient(165deg, #ffffff 0%, #f1f5f9 100%);
+        }
+
+        /* Card 2 */
+        #CardContainer > .card-2 {
+            clip-path: polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%);
+            background-image: linear-gradient(165deg, #ffffff 0%, #f0fdf4 100%);
+        }
+
+        /* Card 3 */
+        #CardContainer > .card-3 {
+            clip-path: polygon(0% 0%, 100% 5%, 100% 100%, 0% 95%);
+            background-image: linear-gradient(165deg, #ffffff 0%, #f1f5f9 100%);
+        }
+
+
+        #CardContainer img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        #CardContainer > .card-1 img {
+            clip-path: polygon(0% 0%, 100% 8%, 100% 100%, 0% 92%);
+        }
+
+        #CardContainer > .card-2 img {
+            clip-path: polygon(0% 8%, 100% 0%, 100% 92%, 0% 100%);
+        }
+
+        #CardContainer > .card-3 img {
+            clip-path: polygon(0% 0%, 100% 8%, 100% 100%, 0% 92%);
+        }
+
+        #CardContainer h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 0 0 15px 0;
+            position: relative;
+        }
+
+        #CardContainer p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Unique tilt for text to match the polygons */
+        #CardContainer > .card-1 h3, #CardContainer > .card-1 p { transform: skewY(1deg); }
+        #CardContainer > .card-2 h3, #CardContainer > .card-2 p { transform: skewY(-1deg); }
+        #CardContainer > .card-3 h3, #CardContainer > .card-3 p { transform: skewY(1deg); }
+
+
+        /* Navbar Styling */
+        #Navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-register {
+            background-color: var(--primary);
+            color: white; /* teks putih untuk button */
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-register:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0, 255, 136, 0.1);
+        }
+
+        /* Hero Section */
+        #Hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            gap: 50px;
+        }
+
+        /* Hero Left - Image Gallery */
+        #Hero-Left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            perspective: 1000px;
+            height: 500px;
+        }
+
+        #Hero-Left img {
+            width: 180px;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* shadow lebih lembut */
+            transition: all 0.5s ease;
+            border: 2px solid var(--glass-border);
+        }
+
+        #GambarKiri1 {
+            transform: rotateY(15deg) translateZ(-50px);
+            opacity: 0.8;
+        }
+
+        #GambarKiri2 {
+            transform: scale(1.15) translateZ(50px);
+            z-index: 10;
+            box-shadow: 0 30px 60px rgba(16, 185, 129, 0.2);
+            border-color: var(--primary);
+            width: 220px;
+            height: 440px;
+        }
+
+        #GambarKiri3 {
+            transform: rotateY(-15deg) translateZ(-50px);
+            opacity: 0.8;
+        }
+
+
+
+        /* Hero Right - Text */
+        #Hero-Right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        #Judul {
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+            color: var(--primary);
+        }
+
+        #Deskripsi {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Container 3 - Call To Action */
+        #Container-3 {
+            background-color: var(--text-main); /* Menggunakan warna abu tua/hitam agar kontras dengan container 2 */
+            padding: 80px 10%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #JudulContainer-3 h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin: 0 0 15px 0;
+        }
+
+        #JudulContainer-3 p {
+            font-size: 1.2rem;
+            color: #cbd5e1; /* abu cerah */
+            margin: 0 0 40px 0;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        #ButtonContainer-3 .btn-register {
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        #ButtonContainer-3 .btn-register:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            #Hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+            #Hero-Right {
+                align-items: center;
+            }
+            #Judul {
+                font-size: 4rem;
+            }
+            #Deskripsi {
+                margin: 0 auto 30px auto;
+            }
+        }
+        @media (max-width: 768px) {
+            #Hero-Left img {
+                width: 120px;
+                height: 250px;
+            }
+            #GambarKiri2 {
+                width: 150px;
+                height: 300px;
+            }
+        }

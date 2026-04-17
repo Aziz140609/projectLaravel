@@ -1,0 +1,222 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }
+
+body {
+    min-height: 100vh;
+    background-color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-card {
+    background: white;
+    border-radius: 24px;
+    padding: 45px 40px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+}
+
+.form-header {
+    margin-bottom: 30px;
+}
+
+.form-header a {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.form-header a:hover { color: #475569; }
+
+.form-header h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-top: 10px;
+}
+
+.court-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #15803d;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-top: 8px;
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #1e293b;
+    transition: border-color 0.3s;
+    background: #f8fafc;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #10b981;
+    background: white;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.total-box {
+    background: #f0fdf4;
+    border: 2px solid #10b981;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.total-label {
+    font-weight: 600;
+    color: #475569;
+}
+
+.total-harga {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #10b981;
+}
+
+.btn-submit {
+    width: 100%;
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 0.82rem;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Payment Options */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.payment-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #f8fafc;
+}
+
+.payment-card.active {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.payment-icon {
+    font-size: 1.8rem;
+    width: 45px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.payment-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.payment-title {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+.payment-desc {
+    color: #94a3b8;
+    font-size: 0.82rem;
+    margin-top: 2px;
+}
+
+.payment-check {
+    color: #10b981;
+    font-weight: 800;
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.payment-card.active .payment-check {
+    opacity: 1;
+}
+
+/* QR Panel */
+.qr-panel {
+    display: none;
+    text-align: center;
+    background: #f0fdf4;
+    border: 2px dashed #10b981;
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.qr-title {
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.qr-image {
+    border-radius: 10px;
+    border: 3px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.qr-note {
+    color: #475569;
+    font-size: 0.82rem;
+    margin-top: 10px;
+}
