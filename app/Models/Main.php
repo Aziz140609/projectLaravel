@@ -15,6 +15,7 @@ class Main extends Model
         'jam_mulai',
         'jam_selesai',
         'nomor_lapangan',
+        'court_id',
         'status_pembayaran',
         'total_harga',
         'user_id',
@@ -23,5 +24,10 @@ class Main extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function court()
+    {
+        return $this->belongsTo(Court::class, 'court_id');
     }
 }

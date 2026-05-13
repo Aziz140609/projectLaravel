@@ -10,7 +10,8 @@ function hitungHarga() {
         document.getElementById('total_harga').value = 0;
         return;
     }
-    const total = durasi * 100000;
+    const pricePerHour = document.getElementById('price_per_hour').value || 100000;
+    const total = durasi * pricePerHour;
     document.getElementById('total-display').textContent = 'Rp ' + total.toLocaleString('id-ID');
     document.getElementById('total_harga').value = total;
     document.getElementById('total-box').style.display = 'flex';
@@ -19,5 +20,4 @@ function hitungHarga() {
 function pilihPembayaran(metode) {
     document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('active'));
     document.getElementById('card-' + metode).classList.add('active');
-    document.getElementById('qr-panel').style.display = (metode === 'qr') ? 'block' : 'none';
 }

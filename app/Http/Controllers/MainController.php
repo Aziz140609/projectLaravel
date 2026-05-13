@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Main;
+use App\Models\Court;
 use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
@@ -11,14 +12,16 @@ class MainController extends Controller
     // Tampilkan halaman pilih lapangan
     public function index()
     {
-        return view('index');
+        $courts = Court::all();
+        return view('index', compact('courts'));
     }
 
     // Tampilkan form booking (harus login)
     public function bookingForm(Request $request)
     {
-        $lapangan = $request->query('lapangan', '1'); // default lapangan 1
-        return view('booking', compact('lapangan'));
+        $court_id = $request->query('court_id');
+        $court = Court::findOrFail($court_id);
+        return view('booking', compact('court'));
     }
 
     // Step 1: Pilih Lapangan
@@ -78,23 +81,48 @@ class MainController extends Controller
             'tanggal_main' => 'required|date',
             'jam_mulai' => 'required',
             'jam_selesai' => 'required',
-            'nomor_lapangan' => 'required|string',
+            'court_id' => 'required|exists:courts,id',
             'total_harga' => 'required|integer',
+            'metode_pembayaran' => 'required|string',
         ]);
 
+        $court = Court::find($validatedData['court_id']);
+        $validatedData['nomor_lapangan'] = $court->name;
         $validatedData['status_pembayaran'] = 'belum lunas'; 
+
+        // Don't include metode_pembayaran in create() as it's not in fillable/db
+        $metode = $validatedData['metode_pembayaran'];
+        unset($validatedData['metode_pembayaran']);
 
         $booking = Auth::user()->mains()->create($validatedData);
 
-        return redirect()->route('booking.payment', $booking->id);
+        return redirect()->route('booking.payment', $booking->id)->with('metode', $metode);
     }
 
-    public function payment(Main $main)
+    public function payment(Request $request, Main $main)
     {
         if ($main->user_id !== Auth::id()) {
             abort(403);
         }
+
+        $metode = session('metode') ?? 'qr';
+
+        if ($metode === 'tempat') {
+            return redirect()->route('booking.proof', $main->id);
+        }
+
         return view('booking.payment', compact('main'));
+    }
+
+    public function gateway(Main $main)
+    {
+        // View yang akan dibuka di HP saat QR discan
+        return view('booking.payment-gateway', compact('main'));
+    }
+
+    public function checkStatus(Main $main)
+    {
+        return response()->json(['status' => $main->status_pembayaran]);
     }
 
     public function processPayment(Request $request, Main $main)

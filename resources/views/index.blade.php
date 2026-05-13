@@ -28,38 +28,21 @@
         <h1 class="section-title">Pilih Lapangan</h1>
 
         <div class="court-grid">
-            <!-- Lapangan 1 -->
-            <div class="court-card">
-                <img src="{{ asset('img/lapangan.jpg') }}" alt="Lapangan 1" class="court-image">
-                <div class="court-info">
-                    <h2>Lapangan 1</h2>
-                    <p class="court-price">Rp 100.000 / jam</p>
-                    <span class="court-status status-available">Tersedia</span>
-                    <a href="{{ route('booking.form') }}?lapangan=1" class="btn-booking">Booking Sekarang</a>
+            @forelse($courts as $court)
+                <div class="court-card">
+                    <img src="{{ $court->image ? asset('storage/'.$court->image) : asset('img/lapangan.jpg') }}" alt="{{ $court->name }}" class="court-image">
+                    <div class="court-info">
+                        <h2>{{ $court->name }}</h2>
+                        <p class="court-price">Rp {{ number_format($court->price_per_hour, 0, ',', '.') }} / jam</p>
+                        <span class="court-status status-available">Tersedia</span>
+                        <a href="{{ route('booking.form') }}?court_id={{ $court->id }}" class="btn-booking">Booking Sekarang</a>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Lapangan 2 -->
-            <div class="court-card">
-                <img src="{{ asset('img/lapangan.jpg') }}" alt="Lapangan 2" class="court-image">
-                <div class="court-info">
-                    <h2>Lapangan 2</h2>
-                    <p class="court-price">Rp 100.000 / jam</p>
-                    <span class="court-status status-available">Tersedia</span>
-                    <a href="{{ route('booking.form') }}?lapangan=2" class="btn-booking">Booking Sekarang</a>
+            @empty
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">
+                    <p>Maaf, belum ada lapangan yang tersedia saat ini.</p>
                 </div>
-            </div>
-
-            <!-- Lapangan 3 -->
-            <div class="court-card">
-                <img src="{{ asset('img/lapangan.jpg') }}" alt="Lapangan 3" class="court-image">
-                <div class="court-info">
-                    <h2>Lapangan 3</h2>
-                    <p class="court-price">Rp 100.000 / jam</p>
-                    <span class="court-status status-available">Tersedia</span>
-                    <a href="{{ route('booking.form') }}?lapangan=3" class="btn-booking">Booking Sekarang</a>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 

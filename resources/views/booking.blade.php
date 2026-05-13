@@ -12,12 +12,13 @@
         <div class="form-header">
             <a href="{{ route('booking.index') }}">← Kembali pilih lapangan</a>
             <h1>Form Booking</h1>
-            <span class="court-badge">Lapangan {{ $lapangan }}</span>
+            <span class="court-badge">{{ $court->name }}</span>
         </div>
 
-        <form action="#" method="POST">
+        <form action="{{ route('booking.submit') }}" method="POST">
             @csrf
-            <input type="hidden" name="nomor_lapangan" value="{{ $lapangan }}">
+            <input type="hidden" name="court_id" value="{{ $court->id }}">
+            <input type="hidden" id="price_per_hour" value="{{ $court->price_per_hour }}">
 
             <div class="form-group">
                 <label for="nama">Nama Pemesan</label>
@@ -83,13 +84,8 @@
                 </div>
             </div>
 
-            <!-- Panel QR Code -->
-            <div class="qr-panel" id="qr-panel">
-                <p class="qr-title">Scan QR Code untuk Pembayaran</p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=ArenaPlay-Pembayaran" alt="QR Code" class="qr-image">
-                <p class="qr-note">Tunjukkan bukti transfer saat tiba di lapangan</p>
-            </div>
-
+            <!-- Panel QR Code (Dihapus karena akan muncul di halaman selanjutnya) -->
+            
             <button type="submit" class="btn-submit">Konfirmasi Booking</button>
         </form>
     </div>
