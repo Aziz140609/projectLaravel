@@ -523,9 +523,7 @@
             <a href="{{ route('admin.users') }}" class="menu-item"><i class="fa-solid fa-users"></i> User</a>
             <a href="#" class="menu-item"><i class="fa-solid fa-wallet"></i> Pembayaran</a>
             
-            <div class="menu-label">Sistem</div>
-            <a href="#" class="menu-item"><i class="fa-solid fa-chart-pie"></i> Laporan</a>
-            <a href="#" class="menu-item"><i class="fa-solid fa-gear"></i> Setting</a>
+
         </div>
     </aside>
 

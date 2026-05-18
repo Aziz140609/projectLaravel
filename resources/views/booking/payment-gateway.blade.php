@@ -70,19 +70,37 @@
         <form id="paymentForm" action="{{ route('booking.process', $main->id) }}" method="POST">
             @csrf
             <div class="method-list">
+                <div style="font-size: 0.9rem; color: #6B7280; font-weight: 600; margin-bottom: -4px;">E-Wallet</div>
                 <div class="method-card selected" onclick="selectMethod(this)">
-                    <div class="method-icon" style="color: #10B981;"><i class="fa-solid fa-wallet"></i></div>
-                    <div class="method-name">DANA / Gopay / OVO</div>
+                    <div class="method-icon" style="color: #00AED6; background: #E0F7FA;"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="method-name">GoPay</div>
                     <div class="radio-btn"></div>
                 </div>
                 <div class="method-card" onclick="selectMethod(this)">
-                    <div class="method-icon" style="color: #3B82F6;"><i class="fa-solid fa-building-columns"></i></div>
-                    <div class="method-name">Virtual Account Bank</div>
+                    <div class="method-icon" style="color: #4C3494; background: #EDE7F6;"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="method-name">OVO</div>
                     <div class="radio-btn"></div>
                 </div>
                 <div class="method-card" onclick="selectMethod(this)">
-                    <div class="method-icon" style="color: #F59E0B;"><i class="fa-regular fa-credit-card"></i></div>
-                    <div class="method-name">Kartu Kredit / Debit</div>
+                    <div class="method-icon" style="color: #118EEA; background: #E3F2FD;"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="method-name">DANA</div>
+                    <div class="radio-btn"></div>
+                </div>
+
+                <div style="font-size: 0.9rem; color: #6B7280; font-weight: 600; margin-top: 8px; margin-bottom: -4px;">Virtual Account Bank</div>
+                <div class="method-card" onclick="selectMethod(this)">
+                    <div class="method-icon" style="color: #00529C; background: #E1F5FE;"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="method-name">BRI Virtual Account</div>
+                    <div class="radio-btn"></div>
+                </div>
+                <div class="method-card" onclick="selectMethod(this)">
+                    <div class="method-icon" style="color: #0066AE; background: #E1F5FE;"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="method-name">BCA Virtual Account</div>
+                    <div class="radio-btn"></div>
+                </div>
+                <div class="method-card" onclick="selectMethod(this)">
+                    <div class="method-icon" style="color: #F2A900; background: #FFF8E1;"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="method-name">Mandiri Virtual Account</div>
                     <div class="radio-btn"></div>
                 </div>
             </div>

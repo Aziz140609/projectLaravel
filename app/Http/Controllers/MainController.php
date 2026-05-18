@@ -80,19 +80,51 @@ class MainController extends Controller
             'no_telepon' => 'required|string|max:20',
             'tanggal_main' => 'required|date',
             'jam_mulai' => 'required',
-            'jam_selesai' => 'required',
+            'durasi' => 'required|integer|min:30|max:180',
             'court_id' => 'required|exists:courts,id',
-            'total_harga' => 'required|integer',
+            'total_harga' => 'required|numeric',
             'metode_pembayaran' => 'required|string',
         ]);
 
         $court = Court::find($validatedData['court_id']);
+        
+        // Calculate jam_selesai
+        $jam_mulai = $validatedData['jam_mulai'];
+        $durasi = (int) $validatedData['durasi'];
+        $startTime = \Carbon\Carbon::parse($jam_mulai);
+        $endTime = $startTime->copy()->addMinutes($durasi);
+        $jam_selesai = $endTime->format('H:i');
+
+        // Check operational hours (09:00 - 23:00)
+        $operationalStart = \Carbon\Carbon::parse('09:00');
+        $operationalEnd = \Carbon\Carbon::parse('23:00');
+
+        if ($startTime->lt($operationalStart) || $endTime->gt($operationalEnd)) {
+            return back()->with('error_conflict', 'Waktu main di luar jam operasional (09:00 - 23:00). Silakan pilih jam atau kurangi durasi main!');
+        }
+
+        // Check for conflicts
+        $conflict = Main::where('nomor_lapangan', $court->name)
+            ->where('tanggal_main', $validatedData['tanggal_main'])
+            ->where(function($query) use ($jam_mulai, $jam_selesai) {
+                // Irirsan waktu: Start1 < End2 AND End1 > Start2
+                $query->where('jam_mulai', '<', $jam_selesai)
+                      ->where('jam_selesai', '>', $jam_mulai);
+            })
+            ->exists();
+
+        if ($conflict) {
+            return back()->with('error_conflict', 'Jadwal bertabrakan dengan pesanan lain pada tanggal ' . \Carbon\Carbon::parse($validatedData['tanggal_main'])->format('d-m-Y') . ' jam ' . $jam_mulai . ' - ' . $jam_selesai . '. Silakan pilih waktu lain!');
+        }
+
+        $validatedData['jam_selesai'] = $jam_selesai;
         $validatedData['nomor_lapangan'] = $court->name;
         $validatedData['status_pembayaran'] = 'belum lunas'; 
 
-        // Don't include metode_pembayaran in create() as it's not in fillable/db
+        // Don't include metode_pembayaran and durasi in create() as it's not in fillable/db
         $metode = $validatedData['metode_pembayaran'];
         unset($validatedData['metode_pembayaran']);
+        unset($validatedData['durasi']);
 
         $booking = Auth::user()->mains()->create($validatedData);
 
@@ -111,7 +143,8 @@ class MainController extends Controller
             return redirect()->route('booking.proof', $main->id);
         }
 
-        return view('booking.payment', compact('main'));
+        // Langsung arahkan ke halaman pilihan E-Wallet (Gateway) tanpa lewat QR Code
+        return redirect()->route('booking.gateway', $main->id);
     }
 
     public function gateway(Main $main)

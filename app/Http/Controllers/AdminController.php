@@ -36,7 +36,8 @@ class AdminController extends Controller
         $startOfMonth = Carbon::now()->startOfMonth()->format('Y-m-d');
         $endOfMonth = Carbon::now()->endOfMonth()->format('Y-m-d');
         $pendapatanBulanIni = Main::where('status_pembayaran', 'lunas')
-            ->whereBetween('tanggal_main', [$startOfMonth, $endOfMonth])
+            ->whereDate('created_at', '>=', $startOfMonth)
+            ->whereDate('created_at', '<=', $endOfMonth)
             ->sum('total_harga');
 
         // 6. Jadwal Aktif (booking yang belum selesai)
@@ -57,7 +58,7 @@ class AdminController extends Controller
             $revenueLabels[] = $date->format('d M');
             
             $dailyRevenue = Main::where('status_pembayaran', 'lunas')
-                ->where('tanggal_main', $date->format('Y-m-d'))
+                ->whereDate('created_at', $date->format('Y-m-d'))
                 ->sum('total_harga');
             
             $revenueData[] = $dailyRevenue;
