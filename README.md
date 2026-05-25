@@ -242,18 +242,6 @@ Tidak ada user ditemukan.
 
 ---
 
-## 💡 Saran tone dan gaya bahasa
-
-Agar konsisten, gunakan:
-- Bahasa yang **ramah dan profesional**
-- Kata-kata yang **ringan, jelas, dan mudah dipahami**
-- Penekanan pada **kemudahan booking**, **kecepatan**, dan **fasilitas**
-
-Jika kamu mau, aku juga bisa bantu:
-1. menyesuaikan README agar lebih **formal / lebih marketing**, atau  
-2. membuat **copy untuk tiap halaman lebih pendek atau lebih punchy**.
-
-
 
 
 
