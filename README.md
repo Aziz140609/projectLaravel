@@ -1,3 +1,269 @@
+### 1. Landing Page / Welcome
+**Headline:**  
+ArenaPlay
+
+**Subheadline:**  
+Tempat bermain futsal terbaik di kota. Fasilitas premium, lapangan berkualitas, dan sistem pemesanan yang cepat.
+
+**CTA:**  
+Booking Sekarang
+
+**Section Keunggulan:**  
+Mengapa memilih ArenaPlay sebagai tempat bermain futsal Anda?
+
+**Card 1:**  
+Tidak Terpengaruh Cuaca  
+Main futsal kapan saja, tanpa khawatir hujan atau panas. Lapangan indoor kami selalu nyaman untuk bermain.
+
+**Card 2:**  
+Pencahayaan Optimal  
+Tetap terang siang maupun malam.
+
+**Card 3:**  
+Cocok untuk Event  
+Tempat yang sempurna untuk mengadakan turnamen futsal, acara perusahaan, atau pertandingan persahabatan.
+
+**Call to action bawah:**  
+Booking lapangan futsal sekarang juga dan nikmati fasilitas terbaik di kota.
+
+---
+
+### 2. Halaman Login
+**Subtitle:**  
+Masuk untuk melanjutkan booking lapangan
+
+**CTA:**  
+Masuk
+
+**Footer:**  
+Belum punya akun? Daftar di sini
+
+**Kembali:**  
+← Kembali ke Beranda
+
+---
+
+### 3. Halaman Register
+**Subtitle:**  
+Buat akun untuk mulai booking lapangan
+
+**CTA:**  
+Daftar Sekarang
+
+**Footer:**  
+Sudah punya akun? Masuk di sini
+
+**Kembali:**  
+← Kembali ke Beranda
+
+---
+
+### 4. Dashboard Pengguna / Dashboard Biasa
+**Heading utama:**  
+Pilih Lapangan
+
+**CTA card:**  
+Booking Sekarang
+
+**State kosong:**  
+Maaf, belum ada lapangan yang tersedia saat ini.
+
+**Nav bar:**  
+Halo, [nama pengguna]
+
+**Button logout:**  
+Logout
+
+---
+
+### 5. Form Booking
+**Heading utama:**  
+Form Booking
+
+**Back link:**  
+← Kembali pilih lapangan
+
+**Field placeholder:**  
+Masukkan nama lengkap
+
+**Label utama:**  
+Nama Pemesan  
+No. HP / WhatsApp  
+Tanggal Main  
+Jam Mulai  
+Durasi Main  
+Metode Pembayaran  
+Estimasi Total
+
+**Payment options:**  
+- Bayar di Tempat  
+  Bayar tunai saat tiba di lapangan
+- Bayar via E-Wallet  
+  E-Wallet & bayar sekarang
+
+**CTA:**  
+Konfirmasi Booking
+
+**Error / alert:**  
+Informasi konflik jadwal bisa ditampilkan di sini jika booking tidak tersedia.
+
+---
+
+### 6. Dashboard Admin
+**Title:**  
+Dashboard Overview
+
+**Header tanggal:**  
+Hari ini: [tanggal]
+
+**Stat cards:**  
+- Total User  
+- Total Booking  
+- Booking Hari Ini  
+- Lapangan Tersedia  
+- Pendapatan Bulan Ini  
+- Jadwal Aktif
+
+**Chart titles:**  
+- Grafik Pendapatan (Mingguan)  
+- Lapangan Terpopuler
+
+**Button:**  
+Lihat Detail
+
+**Table heading:**  
+Daftar Booking
+
+**Badge status:**  
+- Lunas  
+- Belum Lunas
+
+**Sidebar menu:**  
+- Dashboard  
+- Booking  
+- Lapangan  
+- User  
+- Pembayaran
+
+---
+
+### 7. Halaman Admin Booking
+**Title:**  
+Seluruh Log Booking
+
+**Search placeholder:**  
+Cari booking, user, lapangan...
+
+**Header tanggal:**  
+Hari ini: [tanggal]
+
+**Heading table:**  
+Daftar Booking
+
+**Kolom tabel:**  
+- Pelanggan  
+- Lapangan  
+- Tanggal & Jam  
+- Total Bayar  
+- Status  
+- Aksi
+
+**Status:**  
+- Lunas  
+- Belum Lunas
+
+**Action tombol:**  
+- Detail  
+- Verifikasi Lunas  
+- Batalkan/Hapus
+
+**State kosong:**  
+Belum ada data booking.
+
+---
+
+### 8. Halaman Admin Lapangan
+**Title:**  
+Manajemen Lapangan
+
+**Heading:**  
+Daftar Lapangan
+
+**CTA:**  
+Tambah Lapangan
+
+**Deskripsi card lapangan:**  
+Deskripsi lapangan  
+Harga per jam  
+Jadwal / informasi tambahan
+
+**Section schedule:**  
+Jadwal Lapangan
+
+**Action tombol:**  
+- Edit  
+- Hapus
+
+**Modal / form:**  
+- Nama Lapangan  
+- Deskripsi  
+- Harga per jam  
+- Upload gambar
+
+---
+
+### 9. Halaman Admin User
+**Title:**  
+Manajemen User
+
+**Search placeholder:**  
+Cari nama atau email user...
+
+**Heading table:**  
+Daftar Pengguna
+
+**Kolom tabel:**  
+- Nama  
+- Email  
+- Role  
+- Tanggal Bergabung  
+- Aksi
+
+**Role badge:**  
+- admin  
+- user
+
+**State kosong:**  
+Tidak ada user ditemukan.
+
+**Action tombol:**  
+- Detail  
+- Hapus User
+
+---
+
+## 💡 Saran tone dan gaya bahasa
+
+Agar konsisten, gunakan:
+- Bahasa yang **ramah dan profesional**
+- Kata-kata yang **ringan, jelas, dan mudah dipahami**
+- Penekanan pada **kemudahan booking**, **kecepatan**, dan **fasilitas**
+
+Jika kamu mau, aku juga bisa bantu:
+1. menyesuaikan README agar lebih **formal / lebih marketing**, atau  
+2. membuat **copy untuk tiap halaman lebih pendek atau lebih punchy**.
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
