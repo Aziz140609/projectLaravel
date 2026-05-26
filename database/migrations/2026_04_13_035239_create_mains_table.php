@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('mains', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('court_id')->nullable()->constrained()->onDelete('set null');
             $table->string('nama_pemesan');
             $table->string('no_telepon');
             $table->date('tanggal_main');
             $table->time('jam_mulai');
             $table->time('jam_selesai');
-            $table->string('nomor_lapangan');
             $table->enum('status_pembayaran', ['belum lunas', 'dp', 'lunas'])->default('belum lunas');
             $table->integer('total_harga');
             $table->timestamps();

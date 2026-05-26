@@ -36,6 +36,7 @@ Route::middleware('auth')->prefix('booking')->name('booking.')->group(function (
 Route::middleware(\App\Http\Middleware\IsAdmin::class)->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/bookings', [AdminController::class, 'bookings'])->name('admin.bookings');
+    Route::get('/admin/payments', [AdminController::class, 'payments'])->name('admin.payments');
     Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
     Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.destroyUser');
     Route::post('/admin/confirm-payment/{main}', [AdminController::class, 'confirmPayment'])->name('admin.confirmPayment');

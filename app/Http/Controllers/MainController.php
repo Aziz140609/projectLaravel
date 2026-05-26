@@ -24,53 +24,7 @@ class MainController extends Controller
         return view('booking', compact('court'));
     }
 
-    // Step 1: Pilih Lapangan
-    public function step1()
-    {
-        return view('booking.step-1');
-    }
-
-    // Step 2: Pilih Waktu
-    public function step2(Request $request)
-    {
-        $nomor_lapangan = $request->query('lapangan');
-        if (!$nomor_lapangan) {
-            return redirect()->route('booking.step1');
-        }
-
-        return view('booking.step-2', compact('nomor_lapangan'));
-    }
-
-    // Step 3: Isi Formulir / Detail
-    public function step3(Request $request)
-    {
-        $request->validate([
-            'nomor_lapangan' => 'required',
-            'tanggal_main' => 'required|date',
-            'jam_mulai' => 'required',
-            'jam_selesai' => 'required|after:jam_mulai'
-        ]);
-
-        $input = $request->only(['nomor_lapangan', 'tanggal_main', 'jam_mulai', 'jam_selesai']);
-        
-        // Pengecekan Tabrakan Jadwal
-        // (Jam selesai dari input tidak boleh beririsan dengan sesi yang ada)
-        // Kita bandingkan jika sesi target tidak overlap
-        $conflict = Main::where('nomor_lapangan', $input['nomor_lapangan'])
-            ->where('tanggal_main', $input['tanggal_main'])
-            ->where(function($query) use ($input) {
-                // Irirsan waktu: Start1 < End2 AND End1 > Start2
-                $query->where('jam_mulai', '<', $input['jam_selesai'])
-                      ->where('jam_selesai', '>', $input['jam_mulai']);
-            })
-            ->exists();
-
-        if ($conflict) {
-            return back()->with('error_conflict', 'Jadwal bertabrakan dengan pesanan lain pada ' . $input['tanggal_main'] . ' ' . $input['jam_mulai'] . '-' . $input['jam_selesai'] . '. Silakan pilih waktu lain!');
-        }
-
-        return view('booking.step-3', compact('input'));
-    }
+    // (Unused step-1, step-2, step-3 methods removed)
 
     // Simpan data booking ke database (Status Belum Lunas)
     public function store(Request $request)
@@ -104,7 +58,7 @@ class MainController extends Controller
         }
 
         // Check for conflicts
-        $conflict = Main::where('nomor_lapangan', $court->name)
+        $conflict = Main::where('court_id', $court->id)
             ->where('tanggal_main', $validatedData['tanggal_main'])
             ->where(function($query) use ($jam_mulai, $jam_selesai) {
                 // Irirsan waktu: Start1 < End2 AND End1 > Start2
@@ -118,7 +72,6 @@ class MainController extends Controller
         }
 
         $validatedData['jam_selesai'] = $jam_selesai;
-        $validatedData['nomor_lapangan'] = $court->name;
         $validatedData['status_pembayaran'] = 'belum lunas'; 
 
         // Don't include metode_pembayaran and durasi in create() as it's not in fillable/db

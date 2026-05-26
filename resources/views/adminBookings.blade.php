@@ -126,7 +126,7 @@
             
             <div class="menu-label">Manajemen</div>
             <a href="{{ route('admin.users') }}" class="menu-item"><i class="fa-solid fa-users"></i> User</a>
-            <a href="#" class="menu-item"><i class="fa-solid fa-wallet"></i> Pembayaran</a>
+            <a href="{{ route('admin.payments') }}" class="menu-item"><i class="fa-solid fa-wallet"></i> Pembayaran</a>
             
 
         </div>
@@ -205,7 +205,7 @@
                                             {{ optional($booking->user)->name ?? 'Guest' }}
                                         </div>
                                     </td>
-                                    <td>Lapangan {{ $booking->nomor_lapangan }}</td>
+                                    <td>{{ $booking->court ? $booking->court->name : 'N/A' }}</td>
                                     <td>
                                         {{ \Carbon\Carbon::parse($booking->tanggal_main)->format('d M Y') }}<br>
                                         <span style="color: var(--text-muted); font-size: 0.85rem;">{{ $booking->jam_mulai }} - {{ $booking->jam_selesai }}</span>

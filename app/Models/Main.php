@@ -14,7 +14,6 @@ class Main extends Model
         'tanggal_main',
         'jam_mulai',
         'jam_selesai',
-        'nomor_lapangan',
         'court_id',
         'status_pembayaran',
         'total_harga',

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Manajemen User</title>
+    <title>Admin Dashboard - Pembayaran</title>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -70,8 +70,15 @@
         .page-content { padding: 32px; flex-grow: 1; }
         .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
         .page-title { font-size: 1.5rem; font-weight: 700; color: var(--text-main); }
+        .date-filter { display: flex; align-items: center; gap: 12px; background-color: var(--surface); padding: 8px 16px; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted); cursor: pointer; }
 
-        /* --- Users Table --- */
+        /* --- Tabs --- */
+        .tabs-container { display: flex; gap: 12px; margin-bottom: 24px; }
+        .tab-item { padding: 10px 20px; border-radius: var(--radius-md); text-decoration: none; color: var(--text-muted); font-weight: 600; background: var(--surface); border: 1px solid var(--border-color); transition: var(--transition); font-size: 0.9rem; }
+        .tab-item:hover { color: var(--primary); background: #F9FAFB; }
+        .tab-item.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* --- Table Card --- */
         .table-card { background-color: var(--surface); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-sm); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .card-title { font-size: 1.1rem; font-weight: 700; color: var(--text-main); }
@@ -82,13 +89,12 @@
         tr:last-child td { border-bottom: none; }
         .user-cell { display: flex; align-items: center; gap: 12px; font-weight: 500; }
         .avatar-sm { width: 32px; height: 32px; border-radius: 50%; background-color: var(--bg-color); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: var(--text-main); }
-        .role-badge { padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
-        .role-admin { background-color: #EEF2FF; color: #4F46E5; }
-        .role-user { background-color: #F3F4F6; color: #6B7280; }
-        
+        .status-badge { padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; display: inline-block; }
+        .status-paid { background-color: #D1FAE5; color: #065F46; }
+        .status-pending { background-color: #FEF3C7; color: #92400E; }
         .action-btns { display: flex; gap: 8px; }
-        .btn-action { width: 32px; height: 32px; border-radius: 8px; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); }
-        .btn-detail { background-color: #EFF6FF; color: #3B82F6; }
+        .btn-action { width: 32px; height: 32px; border-radius: 8px; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); text-decoration: none; }
+        .btn-check { background-color: #ECFDF5; color: #10B981; }
         .btn-times { background-color: #FEF2F2; color: #EF4444; }
         .btn-action:hover { transform: scale(1.05); }
 
@@ -98,12 +104,13 @@
         .pagination li a, .pagination li span { padding: 8px 14px; border: 1px solid var(--border-color); border-radius: var(--radius-md); text-decoration: none; color: var(--text-main); background: var(--surface); transition: var(--transition); font-size: 0.9rem; }
         .pagination li.active span { background-color: var(--primary); color: white; border-color: var(--primary); }
         .pagination li a:hover { background-color: var(--bg-color); border-color: var(--text-muted); }
+        .pagination li.disabled span { color: var(--text-muted); background-color: var(--bg-color); cursor: not-allowed; border-color: var(--border-color); }
+        .pagination li.active span:hover { background-color: var(--primary); border-color: var(--primary); }
 
         @media (max-width: 768px) {
             .sidebar { transform: translateX(-100%); }
             .main-content { margin-left: 0; }
         }
-
     </style>
 </head>
 <body>
@@ -120,10 +127,8 @@
             <a href="{{ route('admin.courts') }}" class="menu-item"><i class="fa-solid fa-futbol"></i> Lapangan</a>
             
             <div class="menu-label">Manajemen</div>
-            <a href="{{ route('admin.users') }}" class="menu-item active"><i class="fa-solid fa-users"></i> User</a>
-            <a href="{{ route('admin.payments') }}" class="menu-item"><i class="fa-solid fa-wallet"></i> Pembayaran</a>
-            
-
+            <a href="{{ route('admin.users') }}" class="menu-item"><i class="fa-solid fa-users"></i> User</a>
+            <a href="{{ route('admin.payments') }}" class="menu-item active"><i class="fa-solid fa-wallet"></i> Pembayaran</a>
         </div>
     </aside>
 
@@ -131,9 +136,12 @@
     <main class="main-content">
         <!-- Top Navbar -->
         <header class="top-navbar">
-            <form action="{{ route('admin.users') }}" method="GET" class="search-bar">
+            <form action="{{ route('admin.payments') }}" method="GET" class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" name="search" placeholder="Cari nama atau email user..." value="{{ request('search') }}">
+                <input type="text" name="search" placeholder="Cari pemesan, lapangan..." value="{{ request('search') }}">
+                @if(request('status'))
+                    <input type="hidden" name="status" value="{{ request('status') }}">
+                @endif
                 <button type="submit" style="display:none;"></button>
             </form>
             
@@ -143,11 +151,14 @@
                     <span class="badge">3</span>
                 </button>
                 <div class="admin-profile">
-                    <div class="admin-avatar">A</div>
+                    <div class="admin-avatar">
+                        A
+                    </div>
                     <div class="admin-info">
                         <span class="admin-name">Admin</span>
                         <span class="admin-role">Super Admin</span>
                     </div>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: var(--text-muted);"></i>
                 </div>
             </div>
         </header>
@@ -155,81 +166,99 @@
         <!-- Page Content -->
         <div class="page-content">
             <div class="page-header">
-                <h1 class="page-title">Manajemen User</h1>
+                <h1 class="page-title">Manajemen Pembayaran</h1>
+                <div class="date-filter">
+                    <i class="fa-regular fa-calendar"></i>
+                    Hari ini: {{ \Carbon\Carbon::now()->format('d M Y') }}
+                </div>
             </div>
 
-            @if(session('success'))
-                <div style="background-color: #ECFDF5; color: #065F46; padding: 12px 16px; border-radius: var(--radius-md); margin-bottom: 16px;">
-                    <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
-                </div>
-            @endif
-            
-            @if(session('error'))
-                <div style="background-color: #FEF2F2; color: #991B1B; padding: 12px 16px; border-radius: var(--radius-md); margin-bottom: 16px;">
-                    <i class="fa-solid fa-circle-xmark"></i> {{ session('error') }}
-                </div>
-            @endif
+            <!-- Tabs Filter -->
+            <div class="tabs-container">
+                <a href="{{ route('admin.payments', ['search' => request('search')]) }}" class="tab-item {{ is_null($status) ? 'active' : '' }}">Semua</a>
+                <a href="{{ route('admin.payments', ['status' => 'belum_lunas', 'search' => request('search')]) }}" class="tab-item {{ $status === 'belum_lunas' ? 'active' : '' }}">Belum Lunas</a>
+                <a href="{{ route('admin.payments', ['status' => 'lunas', 'search' => request('search')]) }}" class="tab-item {{ $status === 'lunas' ? 'active' : '' }}">Lunas</a>
+            </div>
 
+            <!-- Table Card -->
             <div class="table-card">
                 <div class="card-header">
-                    <h2 class="card-title">Daftar Pengguna</h2>
+                    <h2 class="card-title">Daftar Status Pembayaran</h2>
                 </div>
+                
+                @if(session('success'))
+                    <div style="background-color: #ECFDF5; color: #065F46; padding: 12px 16px; border-radius: var(--radius-md); margin-bottom: 16px;">
+                        <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
+                    </div>
+                @endif
 
                 <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
-                                <th>Nama</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Tanggal Bergabung</th>
-                                <th>Aksi</th>
+                                <th>Pelanggan</th>
+                                <th>Lapangan</th>
+                                <th>Tanggal & Jam Sesi</th>
+                                <th>Total Bayar</th>
+                                <th>Status Pembayaran</th>
+                                <th>Aksi Verifikasi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($users as $user)
+                            @forelse($bookings as $booking)
                                 <tr>
                                     <td>
                                         <div class="user-cell">
-                                            <div class="avatar-sm">{{ strtoupper(substr($user->name, 0, 1)) }}</div>
-                                            {{ $user->name }}
+                                            <div class="avatar-sm">
+                                                {{ strtoupper(substr(optional($booking->user)->name ?? 'G', 0, 2)) }}
+                                            </div>
+                                            <div>
+                                                <div style="font-weight: 600;">{{ optional($booking->user)->name ?? 'Guest' }}</div>
+                                                <div style="font-size: 0.8rem; color: var(--text-muted);">{{ $booking->no_telepon }}</div>
+                                            </div>
                                         </div>
                                     </td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $booking->court ? $booking->court->name : 'N/A' }}</td>
                                     <td>
-                                        <span class="role-badge {{ $user->role == 'admin' ? 'role-admin' : 'role-user' }}">
-                                            {{ $user->role ?? 'User' }}
-                                        </span>
+                                        {{ \Carbon\Carbon::parse($booking->tanggal_main)->format('d M Y') }}<br>
+                                        <span style="color: var(--text-muted); font-size: 0.85rem;">{{ substr($booking->jam_mulai, 0, 5) }} - {{ substr($booking->jam_selesai, 0, 5) }}</span>
                                     </td>
-                                    <td>{{ $user->created_at->format('d M Y') }}</td>
+                                    <td style="font-weight: 600; color: var(--primary);">Rp {{ number_format($booking->total_harga, 0, ',', '.') }}</td>
+                                    <td>
+                                        @if($booking->status_pembayaran == 'lunas')
+                                            <span class="status-badge status-paid"><i class="fa-solid fa-check"></i> Lunas</span>
+                                        @else
+                                            <span class="status-badge status-pending"><i class="fa-solid fa-clock"></i> Belum Lunas</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="action-btns">
-                                            <a href="#" class="btn-action btn-detail" title="Detail"><i class="fa-solid fa-eye"></i></a>
-                                            
-                                            @if($user->id !== auth()->id())
-                                            <form action="{{ route('admin.destroyUser', $user->id) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn-action btn-times" title="Hapus User" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </button>
-                                            </form>
+                                            @if($booking->status_pembayaran != 'lunas')
+                                                <form action="{{ route('admin.confirmPayment', $booking->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    <button type="submit" class="btn-action btn-check" title="Verifikasi Lunas" onclick="return confirm('Konfirmasi pembayaran lunas untuk booking ini?')">
+                                                        <i class="fa-solid fa-check"></i>
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <span style="color: var(--secondary); font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Terverifikasi</span>
                                             @endif
                                         </div>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">Tidak ada user ditemukan.</td>
+                                    <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">Belum ada data pembayaran.</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
 
-                @if($users->hasPages())
+                <!-- Pagination -->
+                @if($bookings->hasPages())
                     <div class="pagination-container">
-                        {{ $users->appends(['search' => request('search')])->links('pagination::bootstrap-4') }}
+                        {{ $bookings->appends(['status' => request('status'), 'search' => request('search')])->links('pagination::bootstrap-4') }}
                     </div>
                 @endif
             </div>

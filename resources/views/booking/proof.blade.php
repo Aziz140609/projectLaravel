@@ -80,7 +80,7 @@
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Lapangan</span>
-                    <span class="detail-value">Lap. {{ $main->nomor_lapangan }}</span>
+                    <span class="detail-value">{{ $main->court ? $main->court->name : 'N/A' }}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Jadwal Main</span>

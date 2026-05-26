@@ -314,4 +314,4 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di komputer lokal A
 9. Buka browser dan akses `http://localhost:8000`.
 
 ---
-*Dibuat dengan ❤️ untuk kemudahan pengelolaan lapangan futsal.*
+

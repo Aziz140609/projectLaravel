@@ -65,9 +65,11 @@ class AdminController extends Controller
         }
 
         // 8. Lapangan Terpopuler
-        $popularCourts = Main::select('nomor_lapangan', DB::raw('count(*) as total'))
-            ->groupBy('nomor_lapangan')
+        $popularCourts = Main::select('court_id', DB::raw('count(*) as total'))
+            ->whereNotNull('court_id')
+            ->groupBy('court_id')
             ->orderByDesc('total')
+            ->with('court')
             ->get();
         
         $courtLabels = [];
@@ -77,7 +79,7 @@ class AdminController extends Controller
         $colorIdx = 0;
         
         foreach($popularCourts as $c) {
-            $courtLabels[] = 'Lapangan ' . $c->nomor_lapangan;
+            $courtLabels[] = $c->court ? $c->court->name : 'Lapangan Lain';
             $courtData[] = $c->total;
             $bgColors[] = $courtColors[$colorIdx % count($courtColors)];
             $colorIdx++;
@@ -91,7 +93,7 @@ class AdminController extends Controller
         }
 
         // 9. Booking Biasa
-        $recentBookings = Main::with('user')->orderBy('created_at', 'desc')->get();
+        $recentBookings = Main::with(['user', 'court'])->orderBy('created_at', 'desc')->get();
 
         return view('dashboardAdmin', compact(
             'totalUser',
@@ -112,20 +114,49 @@ class AdminController extends Controller
     public function bookings(Request $request)
     {
         $search = $request->input('search');
-        $query = Main::with('user')->orderBy('created_at', 'desc');
+        $query = Main::with(['user', 'court'])->orderBy('created_at', 'desc');
         
         if ($search) {
             $query->where(function($q) use ($search) {
                 $q->whereHas('user', function($userQuery) use ($search) {
                     $userQuery->where('name', 'like', "%{$search}%");
-                })->orWhere('nomor_lapangan', 'like', "%{$search}%")
-                  ->orWhere('tanggal_main', 'like', "%{$search}%");
+                })->orWhereHas('court', function($courtQuery) use ($search) {
+                    $courtQuery->where('name', 'like', "%{$search}%");
+                })->orWhere('tanggal_main', 'like', "%{$search}%");
             });
         }
         
         $bookings = $query->paginate(20);
         
         return view('adminBookings', compact('bookings', 'search'));
+    }
+
+    public function payments(Request $request)
+    {
+        $status = $request->input('status'); // null, 'belum_lunas', 'lunas'
+        $search = $request->input('search');
+
+        $query = Main::with(['user', 'court'])->orderBy('created_at', 'desc');
+
+        if ($status === 'belum_lunas') {
+            $query->where('status_pembayaran', 'belum lunas');
+        } elseif ($status === 'lunas') {
+            $query->where('status_pembayaran', 'lunas');
+        }
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->whereHas('user', function($userQuery) use ($search) {
+                    $userQuery->where('name', 'like', "%{$search}%");
+                })->orWhereHas('court', function($courtQuery) use ($search) {
+                    $courtQuery->where('name', 'like', "%{$search}%");
+                })->orWhere('tanggal_main', 'like', "%{$search}%");
+            });
+        }
+
+        $bookings = $query->paginate(20);
+
+        return view('adminPayments', compact('bookings', 'status', 'search'));
     }
 
     public function users(Request $request)

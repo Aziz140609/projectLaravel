@@ -403,7 +403,7 @@
             
             <div class="menu-label">Manajemen</div>
             <a href="{{ route('admin.users') }}" class="menu-item"><i class="fa-solid fa-users"></i> User</a>
-            <a href="#" class="menu-item"><i class="fa-solid fa-wallet"></i> Pembayaran</a>
+            <a href="{{ route('admin.payments') }}" class="menu-item"><i class="fa-solid fa-wallet"></i> Pembayaran</a>
         </div>
     </aside>
 
