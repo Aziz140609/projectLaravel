@@ -1,6 +1,6 @@
 # ArenaPlay - Aplikasi Booking Lapangan Futsal 🏟️⚽
 
-![Preview ArenaPlay](assets/ChatGPT%20Image%20May%2026,%202026,%2007_33_30%20AM.png)
+<img src="assets/ChatGPT Image May 26, 2026, 07_33_30 AM.png" alt="Preview ArenaPlay" width="100%">
 
 ## 📖 Deskripsi
 ArenaPlay adalah platform aplikasi web berbasis Laravel yang dirancang untuk memudahkan proses pemesanan (booking) lapangan futsal. Sistem ini menyediakan antarmuka yang ramah pengguna bagi pelanggan untuk melihat ketersediaan lapangan dan melakukan pemesanan, serta menyediakan dashboard komprehensif bagi admin untuk mengelola seluruh operasional lapangan futsal.
@@ -11,7 +11,7 @@ ArenaPlay adalah platform aplikasi web berbasis Laravel yang dirancang untuk mem
 
 ### 1. Landing Page / Welcome
 
-![Landing Page](assets/Screenshot%202026-05-26%20070054.png)
+<img src="assets/HalamanUtama.png" alt="Landing Page" width="100%">
 
 **Headline:**  
 ArenaPlay
@@ -39,7 +39,7 @@ Booking lapangan futsal sekarang juga dan nikmati fasilitas terbaik di kota.
 
 ### 2. Halaman Login
 
-![Halaman Login](assets/Screenshot%202026-05-26%20070159.png)
+<img src="assets/login.png" alt="Halaman Login" width="100%">
 
 **Subtitle:**  
 Masuk untuk melanjutkan booking lapangan
@@ -57,7 +57,7 @@ Belum punya akun? Daftar di sini
 
 ### 3. Halaman Register
 
-![Halaman Register](assets/Screenshot%202026-05-26%20070230.png)
+<img src="assets/register.png" alt="Halaman Register" width="100%">
 
 **Subtitle:**  
 Buat akun untuk mulai booking lapangan
@@ -75,7 +75,7 @@ Sudah punya akun? Masuk di sini
 
 ### 4. Dashboard Pengguna / Dashboard Biasa
 
-![Dashboard Pengguna](assets/Screenshot%202026-05-26%20070150.png)
+<img src="assets/booking1.png" alt="Dashboard Pengguna" width="100%">
 
 **Heading utama:**  
 Pilih Lapangan
@@ -96,7 +96,7 @@ Logout
 
 ### 5. Form Booking
 
-![Form Booking](assets/Screenshot%202026-05-26%20070353.png)
+<img src="assets/pesan.png" alt="Form Booking" width="100%">
 
 **Heading utama:**  
 Form Booking
@@ -130,7 +130,7 @@ Informasi konflik jadwal bisa ditampilkan di sini jika booking tidak tersedia.
 
 ### 6. Dashboard Admin
 
-![Dashboard Admin](assets/Screenshot%202026-05-26%20070658.png)
+<img src="assets/dashboardadmin.png" alt="Dashboard Admin" width="100%">
 
 **Title:**  
 Dashboard Overview
@@ -141,7 +141,7 @@ Hari ini: [tanggal]
 **Stat cards:**  
 - Total User  
 - Total Booking  
-- Booking Hari Ini  
+- Booking Hari Hari Ini  
 - Lapangan Tersedia  
 - Pendapatan Bulan Ini  
 - Jadwal Aktif
@@ -171,7 +171,7 @@ Daftar Booking
 
 ### 7. Halaman Admin Booking
 
-![Halaman Admin Booking](assets/Screenshot%202026-05-26%20070720.png)
+<img src="assets/daftarbooking.png" alt="Halaman Admin Booking" width="100%">
 
 **Title:**  
 Seluruh Log Booking
@@ -209,7 +209,7 @@ Belum ada data booking.
 
 ### 8. Halaman Admin Lapangan
 
-![Halaman Admin Lapangan](assets/Screenshot%202026-05-26%20070739.png)
+<img src="assets/tambahlapangan.png" alt="Halaman Admin Lapangan" width="100%">
 
 **Title:**  
 Manajemen Lapangan
@@ -242,7 +242,7 @@ Jadwal Lapangan
 
 ### 9. Halaman Admin User
 
-![Halaman Admin User](assets/Screenshot%202026-05-26%20070829.png)
+<img src="assets/user.png" alt="Halaman Admin User" width="100%">
 
 **Title:**  
 Manajemen User
@@ -315,69 +315,3 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di komputer lokal A
 
 ---
 
-
-
-
-
-
-
-
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
