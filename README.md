@@ -39,7 +39,7 @@ Booking lapangan futsal sekarang juga dan nikmati fasilitas terbaik di kota.
 
 ### 2. Halaman Login
 
-<img src="assets/login.png" alt="Halaman Login" width="100%">
+<img src="assets/login.png" alt="Halaman Login" width="50%">
 
 **Subtitle:**  
 Masuk untuk melanjutkan booking lapangan
@@ -57,7 +57,7 @@ Belum punya akun? Daftar di sini
 
 ### 3. Halaman Register
 
-<img src="assets/register.png" alt="Halaman Register" width="100%">
+<img src="assets/register.png" alt="Halaman Register" width="50%">
 
 **Subtitle:**  
 Buat akun untuk mulai booking lapangan
@@ -96,7 +96,7 @@ Logout
 
 ### 5. Form Booking
 
-<img src="assets/pesan.png" alt="Form Booking" width="100%">
+<img src="assets/pesan.png" alt="Form Booking" width="50%">
 
 **Heading utama:**  
 Form Booking
