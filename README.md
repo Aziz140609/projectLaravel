@@ -1,4 +1,18 @@
+# ArenaPlay - Aplikasi Booking Lapangan Futsal 🏟️⚽
+
+![Preview ArenaPlay](assets/ChatGPT%20Image%20May%2026,%202026,%2007_33_30%20AM.png)
+
+## 📖 Deskripsi
+ArenaPlay adalah platform aplikasi web berbasis Laravel yang dirancang untuk memudahkan proses pemesanan (booking) lapangan futsal. Sistem ini menyediakan antarmuka yang ramah pengguna bagi pelanggan untuk melihat ketersediaan lapangan dan melakukan pemesanan, serta menyediakan dashboard komprehensif bagi admin untuk mengelola seluruh operasional lapangan futsal.
+
+---
+
+## ✨ Detail Fitur dan Tampilan Aplikasi
+
 ### 1. Landing Page / Welcome
+
+![Landing Page](assets/Screenshot%202026-05-26%20070054.png)
+
 **Headline:**  
 ArenaPlay
 
@@ -11,17 +25,12 @@ Booking Sekarang
 **Section Keunggulan:**  
 Mengapa memilih ArenaPlay sebagai tempat bermain futsal Anda?
 
-**Card 1:**  
-Tidak Terpengaruh Cuaca  
-Main futsal kapan saja, tanpa khawatir hujan atau panas. Lapangan indoor kami selalu nyaman untuk bermain.
-
-**Card 2:**  
-Pencahayaan Optimal  
-Tetap terang siang maupun malam.
-
-**Card 3:**  
-Cocok untuk Event  
-Tempat yang sempurna untuk mengadakan turnamen futsal, acara perusahaan, atau pertandingan persahabatan.
+- **Card 1: Tidak Terpengaruh Cuaca**  
+  Main futsal kapan saja, tanpa khawatir hujan atau panas. Lapangan indoor kami selalu nyaman untuk bermain.
+- **Card 2: Pencahayaan Optimal**  
+  Tetap terang siang maupun malam.
+- **Card 3: Cocok untuk Event**  
+  Tempat yang sempurna untuk mengadakan turnamen futsal, acara perusahaan, atau pertandingan persahabatan.
 
 **Call to action bawah:**  
 Booking lapangan futsal sekarang juga dan nikmati fasilitas terbaik di kota.
@@ -29,6 +38,9 @@ Booking lapangan futsal sekarang juga dan nikmati fasilitas terbaik di kota.
 ---
 
 ### 2. Halaman Login
+
+![Halaman Login](assets/Screenshot%202026-05-26%20070159.png)
+
 **Subtitle:**  
 Masuk untuk melanjutkan booking lapangan
 
@@ -44,6 +56,9 @@ Belum punya akun? Daftar di sini
 ---
 
 ### 3. Halaman Register
+
+![Halaman Register](assets/Screenshot%202026-05-26%20070230.png)
+
 **Subtitle:**  
 Buat akun untuk mulai booking lapangan
 
@@ -59,6 +74,9 @@ Sudah punya akun? Masuk di sini
 ---
 
 ### 4. Dashboard Pengguna / Dashboard Biasa
+
+![Dashboard Pengguna](assets/Screenshot%202026-05-26%20070150.png)
+
 **Heading utama:**  
 Pilih Lapangan
 
@@ -77,6 +95,9 @@ Logout
 ---
 
 ### 5. Form Booking
+
+![Form Booking](assets/Screenshot%202026-05-26%20070353.png)
+
 **Heading utama:**  
 Form Booking
 
@@ -87,19 +108,17 @@ Form Booking
 Masukkan nama lengkap
 
 **Label utama:**  
-Nama Pemesan  
-No. HP / WhatsApp  
-Tanggal Main  
-Jam Mulai  
-Durasi Main  
-Metode Pembayaran  
-Estimasi Total
+- Nama Pemesan  
+- No. HP / WhatsApp  
+- Tanggal Main  
+- Jam Mulai  
+- Durasi Main  
+- Metode Pembayaran  
+- Estimasi Total
 
 **Payment options:**  
-- Bayar di Tempat  
-  Bayar tunai saat tiba di lapangan
-- Bayar via E-Wallet  
-  E-Wallet & bayar sekarang
+- **Bayar di Tempat:** Bayar tunai saat tiba di lapangan  
+- **Bayar via E-Wallet:** E-Wallet & bayar sekarang  
 
 **CTA:**  
 Konfirmasi Booking
@@ -110,6 +129,9 @@ Informasi konflik jadwal bisa ditampilkan di sini jika booking tidak tersedia.
 ---
 
 ### 6. Dashboard Admin
+
+![Dashboard Admin](assets/Screenshot%202026-05-26%20070658.png)
+
 **Title:**  
 Dashboard Overview
 
@@ -148,6 +170,9 @@ Daftar Booking
 ---
 
 ### 7. Halaman Admin Booking
+
+![Halaman Admin Booking](assets/Screenshot%202026-05-26%20070720.png)
+
 **Title:**  
 Seluruh Log Booking
 
@@ -183,6 +208,9 @@ Belum ada data booking.
 ---
 
 ### 8. Halaman Admin Lapangan
+
+![Halaman Admin Lapangan](assets/Screenshot%202026-05-26%20070739.png)
+
 **Title:**  
 Manajemen Lapangan
 
@@ -193,9 +221,9 @@ Daftar Lapangan
 Tambah Lapangan
 
 **Deskripsi card lapangan:**  
-Deskripsi lapangan  
-Harga per jam  
-Jadwal / informasi tambahan
+- Deskripsi lapangan  
+- Harga per jam  
+- Jadwal / informasi tambahan
 
 **Section schedule:**  
 Jadwal Lapangan
@@ -213,6 +241,9 @@ Jadwal Lapangan
 ---
 
 ### 9. Halaman Admin User
+
+![Halaman Admin User](assets/Screenshot%202026-05-26%20070829.png)
+
 **Title:**  
 Manajemen User
 
@@ -242,8 +273,47 @@ Tidak ada user ditemukan.
 
 ---
 
+## ⚙️ Cara Instalasi (Local Development)
 
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di komputer lokal Anda:
 
+1. **Clone repositori** atau ekstrak source code.
+2. Buka terminal/command prompt di direktori project:
+   ```bash
+   cd booking-app
+   ```
+3. Install dependencies menggunakan Composer:
+   ```bash
+   composer install
+   ```
+4. Copy file konfigurasi environment:
+   ```bash
+   cp .env.example .env
+   ```
+5. Sesuaikan konfigurasi database di file `.env`:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nama_database_anda
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
+6. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
+7. Jalankan migrasi database dan seeder (untuk data awal):
+   ```bash
+   php artisan migrate --seed
+   ```
+8. Jalankan server lokal:
+   ```bash
+   php artisan serve
+   ```
+9. Buka browser dan akses `http://localhost:8000`.
+
+---
 
 
 
