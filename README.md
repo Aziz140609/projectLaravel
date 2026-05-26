@@ -11,7 +11,7 @@ ArenaPlay adalah platform aplikasi web berbasis Laravel yang dirancang untuk mem
 
 ### 1. Landing Page / Welcome
 
-<img src="assets/Screenshot 2026-05-26 070054.png" alt="Landing Page" width="100%">
+<img src="assets/HalamanUtama.png" alt="Landing Page" width="100%">
 
 **Headline:**  
 ArenaPlay
@@ -39,7 +39,7 @@ Booking lapangan futsal sekarang juga dan nikmati fasilitas terbaik di kota.
 
 ### 2. Halaman Login
 
-<img src="assets/Screenshot 2026-05-26 070159.png" alt="Halaman Login" width="100%">
+<img src="assets/login.png" alt="Halaman Login" width="100%">
 
 **Subtitle:**  
 Masuk untuk melanjutkan booking lapangan
@@ -57,7 +57,7 @@ Belum punya akun? Daftar di sini
 
 ### 3. Halaman Register
 
-<img src="assets/Screenshot 2026-05-26 070230.png" alt="Halaman Register" width="100%">
+<img src="assets/register.png" alt="Halaman Register" width="100%">
 
 **Subtitle:**  
 Buat akun untuk mulai booking lapangan
@@ -75,7 +75,7 @@ Sudah punya akun? Masuk di sini
 
 ### 4. Dashboard Pengguna / Dashboard Biasa
 
-<img src="assets/Screenshot 2026-05-26 070150.png" alt="Dashboard Pengguna" width="100%">
+<img src="assets/booking1.png" alt="Dashboard Pengguna" width="100%">
 
 **Heading utama:**  
 Pilih Lapangan
@@ -96,7 +96,7 @@ Logout
 
 ### 5. Form Booking
 
-<img src="assets/Screenshot 2026-05-26 070353.png" alt="Form Booking" width="100%">
+<img src="assets/pesan.png" alt="Form Booking" width="100%">
 
 **Heading utama:**  
 Form Booking
@@ -130,7 +130,7 @@ Informasi konflik jadwal bisa ditampilkan di sini jika booking tidak tersedia.
 
 ### 6. Dashboard Admin
 
-<img src="assets/Screenshot 2026-05-26 070658.png" alt="Dashboard Admin" width="100%">
+<img src="assets/dashboardadmin.png" alt="Dashboard Admin" width="100%">
 
 **Title:**  
 Dashboard Overview
@@ -171,7 +171,7 @@ Daftar Booking
 
 ### 7. Halaman Admin Booking
 
-<img src="assets/Screenshot 2026-05-26 070720.png" alt="Halaman Admin Booking" width="100%">
+<img src="assets/daftarbooking.png" alt="Halaman Admin Booking" width="100%">
 
 **Title:**  
 Seluruh Log Booking
@@ -209,7 +209,7 @@ Belum ada data booking.
 
 ### 8. Halaman Admin Lapangan
 
-<img src="assets/Screenshot 2026-05-26 070739.png" alt="Halaman Admin Lapangan" width="100%">
+<img src="assets/tambahlapangan.png" alt="Halaman Admin Lapangan" width="100%">
 
 **Title:**  
 Manajemen Lapangan
@@ -242,7 +242,7 @@ Jadwal Lapangan
 
 ### 9. Halaman Admin User
 
-<img src="assets/Screenshot 2026-05-26 070829.png" alt="Halaman Admin User" width="100%">
+<img src="assets/user.png" alt="Halaman Admin User" width="100%">
 
 **Title:**  
 Manajemen User
