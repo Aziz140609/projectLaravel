@@ -273,6 +273,61 @@ Tidak ada user ditemukan.
 
 ---
 
+---
+
+## 🗄️ Struktur Database (ERD)
+
+Aplikasi ini menggunakan skema database relasional yang sederhana namun efektif untuk mengelola pemesanan lapangan. Berikut adalah visualisasi **Entity-Relationship Diagram (ERD)** dari database ArenaPlay:
+
+```mermaid
+erDiagram
+    USERS ||--o{ MAINS : "memiliki riwayat"
+    COURTS ||--o{ MAINS : "dipesan dalam"
+
+    USERS {
+        bigint id PK "Primary Key"
+        string name "Nama Pengguna"
+        string email "Email (Unique)"
+        string password "Password Hashed"
+        string role "Admin / User"
+        timestamp created_at
+    }
+
+    COURTS {
+        bigint id PK "Primary Key"
+        string name "Nama Lapangan (Misal: Lapangan A)"
+        integer price_per_hour "Harga per Jam"
+        text description "Deskripsi"
+        string image "Path Gambar"
+        timestamp created_at
+    }
+
+    MAINS {
+        bigint id PK "Primary Key"
+        bigint user_id FK "ID User pemesan"
+        bigint court_id FK "ID Lapangan"
+        string nama_pemesan "Nama di lapangan"
+        string no_telepon "Kontak WhatsApp"
+        date tanggal_main "Tanggal Booking"
+        time jam_mulai "Waktu Mulai"
+        time jam_selesai "Waktu Selesai"
+        enum status_pembayaran "Belum Lunas / DP / Lunas"
+        integer total_harga "Total Tagihan"
+        timestamp created_at
+    }
+```
+
+### Penjelasan Tabel:
+
+1. **Tabel `users` (Pengguna & Admin)**  
+   Tabel ini menyimpan data seluruh akun yang terdaftar di aplikasi. Terdapat kolom `role` yang berfungsi untuk membedakan antara hak akses **admin** dan **user biasa**.
+2. **Tabel `courts` (Data Lapangan)**  
+   Menyimpan seluruh katalog atau daftar lapangan futsal yang tersedia di ArenaPlay. Informasi harga per jam (`price_per_hour`) diatur dari tabel ini sehingga memudahkan admin jika ingin menaikkan atau menurunkan tarif lapangan.
+3. **Tabel `mains` (Transaksi Booking)**  
+   Ini merupakan tabel utama (transaksional) yang menghubungkan antara *User* dan *Court*. Tabel ini mencatat secara detail kapan lapangan dipesan (`tanggal_main`, `jam_mulai`, `jam_selesai`), data kontak pemesan, serta merekap jumlah tagihan (`total_harga`) dan status pembayarannya.
+
+---
+
 ## ⚙️ Cara Instalasi (Local Development)
 
 Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di komputer lokal Anda:
