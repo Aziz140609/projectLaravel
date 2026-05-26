@@ -277,6 +277,8 @@ Tidak ada user ditemukan.
 
 ## 🗄️ Struktur Database (ERD)
 
+<img src="assets/database_erd.png" alt="Database Illustration" width="100%">
+
 Aplikasi ini menggunakan skema database relasional yang sederhana namun efektif untuk mengelola pemesanan lapangan. Berikut adalah visualisasi **Entity-Relationship Diagram (ERD)** dari database ArenaPlay:
 
 ```mermaid
